@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Explore peer-reviewed online and blended teaching strategies from the Teaching Online Pedagogical Repository."
+    />
+    <meta name="theme-color" content="#191919" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Teaching Online Pedagogical Repository | UCF</title>
+    <script>
+      window.addEventListener("load", function () {
+        const loadTagManager = function () {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            "gtm.start": new Date().getTime(),
+            event: "gtm.js",
+          });
+          const script = document.createElement("script");
+          script.async = true;
+          script.src = "https://www.googletagmanager.com/gtm.js?id=GTM-MPX2FBZ";
+          document.head.appendChild(script);
+        };
+        if ("requestIdleCallback" in window) {
+          window.requestIdleCallback(loadTagManager);
+        } else {
+          window.setTimeout(loadTagManager, 1);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-MPX2FBZ"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+        title="Google Tag Manager"
+      ></iframe>
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
