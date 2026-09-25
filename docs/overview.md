@@ -25,6 +25,8 @@ migration or redirect plan is approved.
 ## Accessibility target
 
 The page targets WCAG 2.2 Level AA. It uses semantic landmarks, one primary
-heading, labeled search controls, visible keyboard focus, 44px minimum controls,
-responsive reflow, and reduced-motion handling. Production review should include
-keyboard navigation, 200% zoom, and assistive-technology spot checks.
+heading inside `main`, labeled search controls, visible keyboard focus, 44px
+minimum controls, responsive reflow, reduced-motion handling, and a footer path
+to UCF Digital Accessibility / `topr@ucf.edu`. Brand fonts ship as local SIL OFL
+woff2 files under `public/fonts/`. Production review should include keyboard
+navigation, 200% zoom, and assistive-technology spot checks.

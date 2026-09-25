@@ -3,13 +3,15 @@ import { describe, expect, it } from "vitest";
 import App from "./App";
 
 describe("TOPR homepage", () => {
-  it("renders the page landmarks and one primary heading", () => {
+  it("renders the page landmarks and one primary heading inside main", () => {
     render(<App />);
 
     expect(screen.getByRole("banner")).toBeInTheDocument();
-    expect(screen.getByRole("main")).toHaveAttribute("id", "main-content");
+    const main = screen.getByRole("main");
+    expect(main).toHaveAttribute("id", "main-content");
     expect(screen.getByRole("contentinfo")).toBeInTheDocument();
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
+    expect(within(main).getByRole("heading", { level: 1 })).toBeInTheDocument();
   });
 
   it("submits searches to the TOPR STARS context", () => {
@@ -27,12 +29,24 @@ describe("TOPR homepage", () => {
     expect(form.querySelector('input[name="context"]')).toHaveValue("14960553");
   });
 
-  it("preserves primary TOPR destinations", () => {
+  it("separates browse and submit destinations on STARS", () => {
     render(<App />);
 
     expect(
-      screen.getByRole("link", { name: "Browse all TOPR entries" }),
+      screen.getByRole("link", { name: "Browse all TOPR entries on STARS" }),
     ).toHaveAttribute("href", "https://stars.library.ucf.edu/topr/");
+    expect(
+      screen.getByRole("link", { name: "Submit an entry on STARS" }),
+    ).toHaveAttribute(
+      "href",
+      "https://stars.library.ucf.edu/cgi/ir_submit.cgi?context=topr",
+    );
+    expect(
+      screen.getByRole("link", { name: "Submit your article on STARS" }),
+    ).toHaveAttribute(
+      "href",
+      "https://stars.library.ucf.edu/cgi/ir_submit.cgi?context=topr",
+    );
     expect(
       screen.getByRole("link", { name: "Join our mailing list" }),
     ).toHaveAttribute(
@@ -40,7 +54,7 @@ describe("TOPR homepage", () => {
       "https://app.e2ma.net/app2/audience/signup/1982025/1957260/",
     );
     expect(
-      screen.getByRole("link", { name: "Submission guidelines" }),
+      screen.getByRole("link", { name: "Submission guidelines on STARS" }),
     ).toHaveAttribute(
       "href",
       "https://stars.library.ucf.edu/topr/guidelines.html",
@@ -56,5 +70,27 @@ describe("TOPR homepage", () => {
     expect(
       screen.getByRole("region", { name: "Search TOPR Entries" }),
     ).toHaveAttribute("id", "search");
+  });
+
+  it("states the stakeholder-aligned review timeline", () => {
+    render(<App />);
+
+    expect(
+      screen.getByText(/Authors receive feedback by/, { exact: false }),
+    ).toHaveTextContent(/July/);
+    expect(
+      screen.getByText(/published and promoted around the fall semester/i),
+    ).toBeInTheDocument();
+  });
+
+  it("includes an accessibility contact path", () => {
+    render(<App />);
+
+    expect(
+      screen.getByRole("link", { name: "UCF Digital Accessibility" }),
+    ).toHaveAttribute("href", "https://www.ucf.edu/accessibility/");
+    expect(
+      screen.getByRole("link", { name: "topr@ucf.edu" }),
+    ).toHaveAttribute("href", "mailto:topr@ucf.edu");
   });
 });

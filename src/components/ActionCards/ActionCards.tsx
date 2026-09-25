@@ -1,4 +1,4 @@
-import { actionCards } from "../../data/homepage";
+import { actionCards, starsPaths } from "../../data/homepage";
 
 function CardIcon({ variant }: { variant: "dark" | "gold" }) {
   if (variant === "gold") {
@@ -40,12 +40,9 @@ export function ActionCards() {
             {card.variant === "gold" && (
               <p className="action-card__details">
                 Review the{" "}
-                <a href="https://stars.library.ucf.edu/topr/policies.html">
-                  author guide
-                </a>{" "}
-                and{" "}
-                <a href="https://stars.library.ucf.edu/topr/guidelines.html">
-                  submission guidelines
+                <a href={starsPaths.authorGuide}>author guide on STARS</a> and{" "}
+                <a href={starsPaths.guidelines}>
+                  submission guidelines on STARS
                 </a>
                 .
               </p>

@@ -1,3 +1,5 @@
+@use "fonts";
+
 $gold: #ffc904;
 $black: #191919;
 $blue: #005ea8;
@@ -475,6 +477,10 @@ input:focus-visible {
   max-width: 35rem;
   margin: 0.35rem 0 0;
   color: #d6d6d6;
+}
+
+.site-footer__a11y {
+  font-size: 0.92rem;
 }
 
 .site-footer a {

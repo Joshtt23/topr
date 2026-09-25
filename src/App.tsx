@@ -11,8 +11,8 @@ export default function App() {
         Skip to main content
       </a>
       <SiteHeader />
-      <Hero />
       <main id="main-content">
+        <Hero />
         <div className="page-shell intro-layout">
           <section className="intro-copy" aria-labelledby="about-topr">
             <p className="section-heading__eyebrow">Teaching that travels</p>
@@ -37,10 +37,11 @@ export default function App() {
               benefit from increased visibility and enhanced analytics.
             </p>
             <p>
-              Submissions are accepted year-round. Formal review and publication
-              occur during the next Call for Submissions, usually from{" "}
+              Submissions are accepted year-round. Formal review occurs during
+              the next Call for Submissions, usually from{" "}
               <strong>February through March</strong>. Authors receive feedback
-              by late April or early May, with final decisions in June.
+              by <strong>July</strong>, with peer-reviewed articles published
+              and promoted around the fall semester.
             </p>
           </section>
           <SearchPanel />
